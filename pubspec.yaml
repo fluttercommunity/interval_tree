@@ -1,8 +1,11 @@
 name: interval_tree
-version: 0.1.0
+version: 0.2.0
 description: >-
-  A Dart port minimal C++ interval tree implementation by Erik Garrison:
-  https://github.com/ekg/intervaltree
+  A non-overlapping interval tree with support for calculating unions,
+  intersections, and differences between individual intervals and entire
+  trees. The interval tree automatically joins and splits appropriate
+  intervals at insertion and removal, respectively, maintaining a
+  collection of non-overlapping intervals.
 homepage: https://github.com/jpnurmi/interval_tree
 repository: https://github.com/jpnurmi/interval_tree
 issue_tracker: https://github.com/jpnurmi/interval_tree/issues
@@ -10,6 +13,7 @@ issue_tracker: https://github.com/jpnurmi/interval_tree/issues
 environment:
   sdk: ">=2.7.0 <3.0.0"
 dependencies:
+  meta: ^1.1.8
   quiver: ^2.1.3
 dev_dependencies:
   test: ^1.14.2

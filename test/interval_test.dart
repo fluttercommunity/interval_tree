@@ -25,21 +25,32 @@ import 'package:test/test.dart';
 import 'package:interval_tree/interval_tree.dart';
 
 void main() {
-  test('startstop', () {
-    final expect_startStop = (interval, start, stop) {
-      expect(interval.start, start);
-      expect(interval.stop, stop);
-    };
-    expect_startStop(Interval(0, 1), 0, 1);
-    expect_startStop(Interval(5, 10), 5, 10);
-    expect_startStop(Interval(0, -10), -10, 0);
+  test('start', () {
+    expect(Interval(0, 0).start, 0);
+    expect(Interval(-1, 1).start, -1);
+    expect(Interval(1, 10).start, 1);
+    expect(Interval(1, -10).start, -10);
+  });
+
+  test('end', () {
+    expect(Interval(0, 0).end, 0);
+    expect(Interval(-1, 1).end, 1);
+    expect(Interval(1, 10).end, 10);
+    expect(Interval(1, -10).end, 1);
+  });
+
+  test('length', () {
+    expect(Interval(0, 0).length, 0);
+    expect(Interval(-1, 1).length, 2);
+    expect(Interval(1, 10).length, 9);
+    expect(Interval(1, -10).length, 11);
   });
 
   test('copy', () {
     final interval = Interval(0, 10);
     final copy = Interval.copy(interval);
     expect(copy.start, interval.start);
-    expect(copy.stop, interval.stop);
+    expect(copy.end, interval.end);
     expect(interval == copy, isTrue);
     expect(copy.toString(), interval.toString());
     expect(identical(interval, copy), isFalse);
@@ -73,7 +84,62 @@ void main() {
     expect(Interval(7, 8) >= Interval(6, 7), isTrue);
   });
 
+  // 1 2 3 4_5_6 7 8 9
+  //  ___ _|_A_|_ ___
+  // |_D_|_B_|_C_|_E_|
+  //   |_F_|___|_G_|
+  //     |___H___|
+  final a = Interval(4, 6);
+  final b = Interval(3, 5);
+  final c = Interval(5, 7);
+  final d = Interval(1, 3);
+  final e = Interval(7, 9);
+  final f = Interval(2, 4);
+  final g = Interval(6, 8);
+  final h = Interval(3, 7);
+
+  test('intersection', () {
+    expect(a.intersection(a), a); // itself
+    expect(a.intersection(b), Interval(a.start, b.end)); // intersect
+    expect(a.intersection(c), Interval(c.start, a.end)); // intersect
+    expect(a.intersection(d), isNull); // no intersection
+    expect(a.intersection(e), isNull); // no intersection
+    expect(a.intersection(f), Interval(f.end, a.start)); // adjacent
+    expect(a.intersection(g), Interval(a.end, g.start)); // adjacent
+    expect(a.intersection(h), a); // contains
+  });
+
+  test('difference', () {
+    expect(a.difference(a), isNull); // itself
+    expect(a.difference(b), [Interval(b.end, a.end)]); // intersect
+    expect(a.difference(c), [Interval(a.start, c.start)]); // intersect
+    expect(a.difference(d), [a]); // no intersection
+    expect(a.difference(e), [a]); // no intersection
+    expect(a.difference(f), [a]); // adjacent
+    expect(a.difference(g), [a]); // adjacent
+    expect(a.difference(h), isNull); // contains
+
+    expect(h.difference(a), [Interval(3, 4), Interval(6, 7)]); // split
+    expect(h.difference(b), [Interval(b.end, h.end)]); // h > b
+    expect(h.difference(c), [Interval(h.start, c.start)]); // h < c
+    expect(h.difference(d), [h]); // adjacent
+    expect(h.difference(e), [h]); // adjacent
+    expect(h.difference(f), [Interval(f.end, h.end)]); // h > f
+    expect(h.difference(g), [Interval(h.start, g.start)]); // h < f
+  });
+
+  test('union', () {
+    expect(a.union(a), a); // itself
+    expect(a.union(b), Interval(b.start, a.end)); // intersect
+    expect(a.union(c), Interval(a.start, c.end)); // intersect
+    expect(a.union(d), Interval(d.start, a.end)); // no intersection
+    expect(a.union(e), Interval(a.start, e.end)); // no intersection
+    expect(a.union(f), Interval(f.start, a.end)); // adjacent
+    expect(a.union(g), Interval(a.start, g.end)); // adjacent
+    expect(a.union(h), h); // contains
+  });
+
   test('toString', () {
-    expect(Interval(1, 2).toString(), 'Interval(1, 2)');
+    expect(Interval(1, 2).toString(), '[1, 2]');
   });
 }
