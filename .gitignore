@@ -29,6 +29,9 @@
 .pub-cache/
 .pub/
 build/
+pubspec.lock
+.test_coverage.dart
+lcov.info
 
 # Android related
 **/android/**/gradle-wrapper.jar
