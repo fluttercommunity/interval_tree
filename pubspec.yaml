@@ -1,5 +1,5 @@
 name: interval_tree
-version: 0.0.1
+version: 0.1.0
 description: >-
   A Dart port minimal C++ interval tree implementation by Erik Garrison:
   https://github.com/ekg/intervaltree
