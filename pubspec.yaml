@@ -3,7 +3,7 @@ version: 0.0.1
 description: >-
   A Dart port minimal C++ interval tree implementation by Erik Garrison:
   https://github.com/ekg/intervaltree
-homepage: https://pub.dev/packages/interval_tree
+homepage: https://github.com/jpnurmi/interval_tree
 repository: https://github.com/jpnurmi/interval_tree
 issue_tracker: https://github.com/jpnurmi/interval_tree/issues
 
