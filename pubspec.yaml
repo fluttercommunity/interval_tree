@@ -3,9 +3,7 @@ version: 0.2.0
 description: >-
   A non-overlapping interval tree with support for calculating unions,
   intersections, and differences between individual intervals and entire
-  trees. The interval tree automatically joins and splits appropriate
-  intervals at insertion and removal, respectively, maintaining a
-  collection of non-overlapping intervals.
+  trees.
 homepage: https://github.com/jpnurmi/interval_tree
 repository: https://github.com/jpnurmi/interval_tree
 issue_tracker: https://github.com/jpnurmi/interval_tree/issues
