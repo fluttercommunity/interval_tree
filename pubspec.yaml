@@ -1,5 +1,5 @@
 name: interval_tree
-version: 0.2.0+1
+version: 0.2.0+2
 description: >-
   A non-overlapping interval tree with support for calculating unions,
   intersections, and differences between individual intervals and entire

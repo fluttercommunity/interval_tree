@@ -1,3 +1,7 @@
+## [0.2.0+2] - 2020-04-27
+
+* Fixed double comparison
+
 ## [0.2.0+1] - 2020-04-27
 
 * Cosmetic fixes only to make the Dart Analyzer and Linter happy
