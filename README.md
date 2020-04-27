@@ -1,5 +1,6 @@
 [![pub](https://img.shields.io/pub/v/interval_tree.svg)](https://pub.dev/packages/interval_tree)
-[![license: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![license: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![build](https://github.com/jpnurmi/interval_tree/workflows/build/badge.svg)
 ![coverage](https://raw.githubusercontent.com/jpnurmi/interval_tree/master/coverage_badge.svg)
 
 # interval_tree
