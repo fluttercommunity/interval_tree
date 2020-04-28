@@ -201,10 +201,9 @@ class Interval extends Comparable<Interval> {
   /// - zero if this interval is _equal to_ the [other] interval.
   @override
   int compareTo(Interval other) {
-    if (start == other.start) {
-      return Comparable.compare(end, other.end);
-    }
-    return Comparable.compare(start, other.start);
+    return start == other.start
+        ? _cmp(end, other.end)
+        : _cmp(start, other.start);
   }
 
   /// Returns `true` if this interval start or ends before the [other] interval.
