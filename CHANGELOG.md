@@ -1,3 +1,7 @@
+## [0.2.1] - 2020-MM-DD
+
+* Fixed comparison for intervals with other comparables, such as DateTime
+
 ## [0.2.0+2] - 2020-04-27
 
 * Fixed double comparison

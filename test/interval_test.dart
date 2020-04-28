@@ -58,12 +58,18 @@ void main() {
   });
 
   test('compare', () {
+    final jan = DateTime(2020, 01, 01);
+    final feb = DateTime(2020, 02, 14);
+    final dec = DateTime(2020, 12, 24);
+
     expect(Interval(0, 0) == Interval(0, 0), isTrue);
     expect(Interval(1, 2) == Interval(1, 2), isTrue);
     expect(Interval(3, 4) == Interval(4, 5), isFalse);
     expect(Interval(7, 8) == Interval(6, 7), isFalse);
     expect(Interval(0.5, 1.5) == Interval(0.5, 1.5), isTrue);
     expect(Interval(0.5, 1.5) == Interval(1.5, 2.5), isFalse);
+    expect(Interval(jan, feb) == Interval(jan, feb), isTrue);
+    expect(Interval(jan, feb) == Interval(jan, dec), isFalse);
 
     expect(Interval(0, 0) < Interval(0, 0), isFalse);
     expect(Interval(1, 2) < Interval(1, 2), isFalse);
@@ -71,6 +77,8 @@ void main() {
     expect(Interval(7, 8) < Interval(6, 7), isFalse);
     expect(Interval(0.5, 1.5) < Interval(0.5, 1.5), isFalse);
     expect(Interval(0.5, 1.5) < Interval(1.5, 2.5), isTrue);
+    expect(Interval(jan, feb) < Interval(jan, feb), isFalse);
+    expect(Interval(jan, feb) < Interval(jan, dec), isTrue);
 
     expect(Interval(0, 0) <= Interval(0, 0), isTrue);
     expect(Interval(1, 2) <= Interval(1, 2), isTrue);
@@ -78,6 +86,8 @@ void main() {
     expect(Interval(7, 8) <= Interval(6, 7), isFalse);
     expect(Interval(0.5, 1.5) <= Interval(0.5, 1.5), isTrue);
     expect(Interval(0.5, 1.5) <= Interval(1.5, 2.5), isTrue);
+    expect(Interval(jan, feb) <= Interval(jan, feb), isTrue);
+    expect(Interval(jan, feb) <= Interval(jan, dec), isTrue);
 
     expect(Interval(0, 0) > Interval(0, 0), isFalse);
     expect(Interval(1, 2) > Interval(1, 2), isFalse);
@@ -85,6 +95,8 @@ void main() {
     expect(Interval(7, 8) > Interval(6, 7), isTrue);
     expect(Interval(0.5, 1.5) > Interval(0.5, 1.5), isFalse);
     expect(Interval(0.5, 1.5) > Interval(1.5, 2.5), isFalse);
+    expect(Interval(jan, feb) > Interval(jan, feb), isFalse);
+    expect(Interval(jan, feb) > Interval(jan, dec), isFalse);
 
     expect(Interval(0, 0) >= Interval(0, 0), isTrue);
     expect(Interval(1, 2) >= Interval(1, 2), isTrue);
@@ -92,6 +104,8 @@ void main() {
     expect(Interval(7, 8) >= Interval(6, 7), isTrue);
     expect(Interval(0.5, 1.5) >= Interval(0.5, 1.5), isTrue);
     expect(Interval(0.5, 1.5) >= Interval(1.5, 2.5), isFalse);
+    expect(Interval(jan, feb) >= Interval(jan, feb), isTrue);
+    expect(Interval(jan, feb) >= Interval(jan, dec), isFalse);
   });
 
   // 1 2 3 4_5_6 7 8 9

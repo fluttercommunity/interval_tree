@@ -246,8 +246,9 @@ class Interval extends Comparable<Interval> {
   @override
   String toString() => '[$start, $end]';
 
-  static dynamic _min(dynamic a, dynamic b) => a < b ? a : b;
-  static dynamic _max(dynamic a, dynamic b) => a > b ? a : b;
+  static int _cmp(dynamic a, dynamic b) => Comparable.compare(a, b);
+  static dynamic _min(dynamic a, dynamic b) => _cmp(a, b) < 0 ? a : b;
+  static dynamic _max(dynamic a, dynamic b) => _cmp(a, b) > 0 ? a : b;
 
   final dynamic _start;
   final dynamic _end;
