@@ -1,4 +1,4 @@
-## [0.2.1] - 2020-MM-DD
+## [0.2.1] - 2020-04-29
 
 * Fixed IntervalTree.contains()
 * Fixed comparison for intervals with other comparables, such as DateTime
