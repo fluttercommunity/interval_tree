@@ -102,6 +102,7 @@ class Interval extends Comparable<Interval> {
   dynamic get end => _end;
 
   /// Returns the length of this interval.
+  @deprecated
   dynamic get length => _end - _start;
 
   /// Returns `true` if this interval contains the [other] interval.

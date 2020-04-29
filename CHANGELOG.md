@@ -4,6 +4,7 @@
 * Fixed comparison for intervals with other comparables, such as DateTime
 * Made IntervalTree default constructor, add(), and remove() throw an
   ArgumentError when passing an invalid interval iterable
+* Deprecated Interval.length that would only work with nums
 
 ## [0.2.0+2] - 2020-04-27
 
