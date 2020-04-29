@@ -26,6 +26,7 @@ import 'package:interval_tree/interval_tree.dart';
 
 void main() {
   final Matcher throwsStateError = throwsA(isA<StateError>());
+  final Matcher throwsArgumentError = throwsA(isA<ArgumentError>());
 
   test('copy', () {
     final tree = IntervalTree([0, 10]);
@@ -72,6 +73,13 @@ void main() {
 
     tree.add([1, 6]);
     expect(tree.toList(), [Interval(0, 0), Interval(1, 7)]);
+
+    expect(
+        () => tree.add([
+              [0, 1],
+              [2, 3],
+            ]),
+        throwsArgumentError);
   });
 
   test('remove', () {
@@ -97,6 +105,13 @@ void main() {
 
     tree.remove([5, 12]);
     expect(tree.toList(), [Interval(4, 5), Interval(12, 15)]);
+
+    expect(
+        () => tree.remove([
+              [0, 1],
+              [2, 3],
+            ]),
+        throwsArgumentError);
   });
 
   test('clear', () {
@@ -262,6 +277,8 @@ void main() {
     expect(tree.last, Interval(20, 25));
     expect(tree.length, 3);
     expect(() => tree.single, throwsStateError);
+
+    expect(() => IntervalTree(intervals), throwsArgumentError);
   });
 
   test('toString', () {

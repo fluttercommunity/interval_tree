@@ -452,8 +452,11 @@ class IntervalTree extends IterableMixin<Interval> {
   String toString() => 'IntervalTree' + super.toString();
 
   Interval _asInterval(dynamic interval) {
-    if (interval is List && interval.length == 2) {
-      return Interval(interval[0], interval[1]);
+    if (interval is Iterable) {
+      if (interval.length != 2 || interval.first is Iterable) {
+        throw ArgumentError('$interval is not an interval');
+      }
+      return Interval(interval.first, interval.last);
     }
     return interval as Interval;
   }
