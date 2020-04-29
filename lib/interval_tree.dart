@@ -307,7 +307,7 @@ class Interval extends Comparable<Interval> {
 ///
 ///     final interval = ivt.Interval(1, 2);
 ///
-class IntervalTree extends IterableMixin<Interval> {
+class IntervalTree with IterableMixin<Interval> {
   /// Creates a tree, optionally with an [interval].
   IntervalTree([dynamic interval]) {
     add(interval);
