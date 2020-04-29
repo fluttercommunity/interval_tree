@@ -281,6 +281,62 @@ void main() {
     expect(() => IntervalTree(intervals), throwsArgumentError);
   });
 
+  test('contains', () {
+    expect(pt.contains([0, 0]), isTrue);
+    expect(pt.contains([0, 1]), isTrue);
+    expect(pt.contains([0, 2]), isTrue);
+    expect(pt.contains([0, 3]), isFalse);
+    expect(pt.contains([0, 4]), isFalse);
+
+    expect(pt.contains([1, 1]), isTrue);
+    expect(pt.contains([1, 2]), isTrue);
+    expect(pt.contains([1, 3]), isFalse);
+    expect(pt.contains([1, 4]), isFalse);
+    expect(pt.contains([1, 5]), isFalse);
+
+    expect(pt.contains([2, 2]), isTrue);
+    expect(pt.contains([2, 3]), isFalse);
+    expect(pt.contains([2, 4]), isFalse);
+    expect(pt.contains([2, 5]), isFalse);
+    expect(pt.contains([2, 6]), isFalse);
+
+    expect(pt.contains([3, 3]), isFalse);
+    expect(pt.contains([3, 4]), isFalse);
+    expect(pt.contains([3, 5]), isFalse);
+    expect(pt.contains([3, 6]), isFalse);
+    expect(pt.contains([3, 7]), isFalse);
+
+    expect(pt.contains([4, 4]), isTrue);
+    expect(pt.contains([4, 5]), isTrue);
+    expect(pt.contains([4, 6]), isTrue);
+    expect(pt.contains([4, 7]), isFalse);
+    expect(pt.contains([4, 8]), isFalse);
+
+    expect(pt.contains([5, 5]), isTrue);
+    expect(pt.contains([5, 6]), isTrue);
+    expect(pt.contains([5, 7]), isFalse);
+    expect(pt.contains([5, 8]), isFalse);
+    expect(pt.contains([5, 9]), isFalse);
+
+    expect(pt.contains([6, 6]), isTrue);
+    expect(pt.contains([6, 7]), isFalse);
+    expect(pt.contains([6, 8]), isFalse);
+    expect(pt.contains([6, 9]), isFalse);
+    expect(pt.contains([6, 10]), isFalse);
+
+    expect(pt.contains([7, 7]), isFalse);
+    expect(pt.contains([7, 8]), isFalse);
+    expect(pt.contains([7, 9]), isFalse);
+    expect(pt.contains([7, 10]), isFalse);
+    expect(pt.contains([7, 11]), isFalse);
+
+    expect(pt.contains([8, 8]), isTrue);
+    expect(pt.contains([8, 9]), isTrue);
+    expect(pt.contains([8, 10]), isTrue);
+    expect(pt.contains([8, 11]), isFalse);
+    expect(pt.contains([8, 12]), isFalse);
+  });
+
   test('toString', () {
     expect(IntervalTree(Interval(1, 2)).toString(), 'IntervalTree([1, 2])');
   });
