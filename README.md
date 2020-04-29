@@ -34,10 +34,6 @@ Garrison's [simple C++ interval tree implementation][4], but was soon
 re-written and based on [quiver.collection's][6] AVL implementation of
 a self-balancing binary tree [AvlTreeSet][7].
 
-## License
-
-IntervalTree is licensed under the [MIT][5] license.
-
 [1]: https://dart.dev
 [2]: https://en.wikipedia.org/wiki/Interval_tree
 [3]: https://dart.dev/codelabs/iterables
