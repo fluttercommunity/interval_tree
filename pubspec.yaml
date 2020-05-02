@@ -1,5 +1,5 @@
 name: interval_tree
-version: 0.2.1
+version: 0.2.2
 description: >-
   A non-overlapping interval tree with support for calculating unions,
   intersections, and differences between individual intervals and entire
@@ -12,7 +12,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 dependencies:
   meta: ^1.1.8
-  quiver: ^2.1.3
+  quiver: ^2.0.5
 dev_dependencies:
   test: ^1.14.2
   test_coverage: ^0.4.1

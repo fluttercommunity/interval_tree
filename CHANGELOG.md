@@ -1,3 +1,8 @@
+## [0.2.2] - 2020-05-02
+
+* Bumped down the quiver dependency version to 2.0.5 to be compatible
+  with the current stable channel of the Flutter SDK
+
 ## [0.2.1] - 2020-04-29
 
 * Fixed IntervalTree.contains()
