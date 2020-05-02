@@ -8,11 +8,11 @@ on:
 
 jobs:
   package-analysis:
-
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      - uses: axel-op/dart-package-analyzer@stable
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - name: Analyze package
+        uses: axel-op/dart-package-analyzer@stable
         with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{secrets.GITHUB_TOKEN}}
