@@ -1,9 +1,9 @@
+# Interval Tree for Dart
+
 [![pub](https://img.shields.io/pub/v/interval_tree.svg)](https://pub.dev/packages/interval_tree)
 [![license: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![build](https://github.com/jpnurmi/interval_tree/workflows/build/badge.svg)
 [![codecov](https://codecov.io/gh/jpnurmi/interval_tree/branch/master/graph/badge.svg)](https://codecov.io/gh/jpnurmi/interval_tree)
-
-# interval_tree
 
 A [Dart][1] implementation of an [interval tree][2], with support for
 calculating unions, intersections, and differences between individual
