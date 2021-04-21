@@ -248,8 +248,8 @@ void main() {
     IntervalTree empty = IntervalTree();
     expect(empty.isEmpty, isTrue);
     expect(empty.isNotEmpty, isFalse);
-    // expect(empty.first, isNull);
-    // expect(empty.last, isNull);
+    expect(empty.first, isNull);
+    expect(empty.last, isNull);
     expect(empty.length, 0);
     expect(() => empty.single, throwsStateError);
 
