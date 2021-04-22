@@ -443,11 +443,11 @@ class IntervalTree with IterableMixin<Interval> {
   @override
   bool get isNotEmpty => _tree.isNotEmpty;
 
-  /// Returns the first interval in tree, or `null` if this tree is empty.
+  /// Returns the first interval in tree, otherwise throw StateError.
   @override
   Interval get first => _tree.first;
 
-  /// Returns the first interval in tree, or `null` if this tree is empty.
+  /// Returns the first interval in tree, otherwise throw StateError.
   @override
   Interval get last => _tree.last;
 
