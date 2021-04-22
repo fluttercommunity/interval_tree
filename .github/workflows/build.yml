@@ -19,7 +19,7 @@ jobs:
     - name: Run tests
       run: pub run test
     - name: Measure coverage
-      run: pub run test_coverage
+      run: pub run test_cov
     - name: Upload coverage
       uses: codecov/codecov-action@v1.0.6
       with:
