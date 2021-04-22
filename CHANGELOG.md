@@ -1,3 +1,7 @@
+## [0.3.0] - 2021-04-22
+
+* Migrated to null-safety (thanks @scarnett!)
+
 ## [0.2.2] - 2020-05-02
 
 * Bumped down the quiver dependency version to 2.0.5 to be compatible
