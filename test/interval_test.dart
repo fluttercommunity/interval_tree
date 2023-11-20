@@ -39,13 +39,6 @@ void main() {
     expect(Interval(1, -10).end, 1);
   });
 
-  test('length', () {
-    expect(Interval(0, 0).length, 0);
-    expect(Interval(-1, 1).length, 2);
-    expect(Interval(1, 10).length, 9);
-    expect(Interval(1, -10).length, 11);
-  });
-
   test('copy', () {
     final interval = Interval(0, 10);
     final copy = Interval.copy(interval);

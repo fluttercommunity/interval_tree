@@ -1,3 +1,11 @@
+## [0.4.1] - 2023-11-20
+
+* Update pipeline, actions, and test coverage. (@slightfoot)
+
+## [0.4.0] - 2023-11-20
+
+* Migrated to Dart 3 (@slightfoot)
+
 ## [0.3.0] - 2021-04-22
 
 * Migrated to null-safety (thanks @scarnett!)

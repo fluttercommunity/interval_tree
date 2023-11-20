@@ -1,9 +1,11 @@
+[![Flutter Community: interval_tree](https://fluttercommunity.dev/_github/header/interval_tree)](https://github.com/fluttercommunity/community)
+
 # Interval Tree for Dart
 
 [![pub](https://img.shields.io/pub/v/interval_tree.svg)](https://pub.dev/packages/interval_tree)
 [![license: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![build](https://github.com/jpnurmi/interval_tree/workflows/build/badge.svg)
-[![codecov](https://codecov.io/gh/jpnurmi/interval_tree/branch/main/graph/badge.svg)](https://codecov.io/gh/jpnurmi/interval_tree)
+[![build](https://github.com/fluttercommunity/interval_tree/actions/workflows/build.yml/badge.svg)](https://github.com/fluttercommunity/interval_tree/actions/workflows/build.yml)
+[![codecov](https://codecov.io/gh/fluttercommunity/interval_tree/branch/main/graph/badge.svg)](https://codecov.io/gh/fluttercommunity/interval_tree)
 
 A [Dart][1] implementation of an [interval tree][2], with support for
 calculating unions, intersections, and differences between individual

@@ -84,7 +84,7 @@ import 'package:quiver/collection.dart';
 ///     final interval = ivt.Interval(1, 2);
 ///
 @immutable
-class Interval extends Comparable<Interval> {
+class Interval implements Comparable<Interval> {
   /// Creates an interval between [start] and [end] points.
   Interval(dynamic start, dynamic end)
       : _start = _min(start, end),
@@ -100,10 +100,6 @@ class Interval extends Comparable<Interval> {
 
   /// Returns the end point of this interval.
   dynamic get end => _end;
-
-  /// Returns the length of this interval.
-  @deprecated
-  dynamic get length => _end - _start;
 
   /// Returns `true` if this interval contains the [other] interval.
   bool contains(Interval other) => other.start >= start && other.end <= end;
@@ -247,7 +243,9 @@ class Interval extends Comparable<Interval> {
   String toString() => '[$start, $end]';
 
   static int _cmp(dynamic a, dynamic b) => Comparable.compare(a, b);
+
   static dynamic _min(dynamic a, dynamic b) => _cmp(a, b) < 0 ? a : b;
+
   static dynamic _max(dynamic a, dynamic b) => _cmp(a, b) > 0 ? a : b;
 
   final dynamic _start;
@@ -327,13 +325,15 @@ class IntervalTree with IterableMixin<Interval> {
   factory IntervalTree.of(Iterable<Interval?> intervals) =>
       IntervalTree()..addAll(intervals);
 
+  final _tree = AvlTreeSet<Interval>(comparator: Comparable.compare);
+
   /// Adds an [interval] into this tree.
-  void add(dynamic? interval) {
-    Interval? iv = _asInterval(interval);
+  void add(dynamic interval) {
+    var iv = _asInterval(interval);
     if (iv == null) return;
 
     bool joined = false;
-    BidirectionalIterator<Interval?> it = _tree.fromIterator(iv);
+    var it = _tree.fromIterator(iv);
     while (it.movePrevious()) {
       final union = _tryJoin(it.current, iv);
       if (union == null) break;
@@ -365,7 +365,7 @@ class IntervalTree with IterableMixin<Interval> {
   void remove(dynamic interval) {
     final iv = _asInterval(interval);
 
-    BidirectionalIterator<Interval> it = _tree.fromIterator(iv!);
+    var it = _tree.fromIterator(iv!);
     while (it.movePrevious()) {
       final current = it.current;
       if (!_trySplit(it.current, iv)) break;
@@ -405,7 +405,7 @@ class IntervalTree with IterableMixin<Interval> {
     final result = IntervalTree();
     if (isEmpty || other.isEmpty) result;
     for (final iv in other) {
-      BidirectionalIterator<Interval> it = _tree.fromIterator(iv);
+      var it = _tree.fromIterator(iv);
       while (it.movePrevious() && iv.intersects(it.current)) {
         result.add(iv.intersection(it.current));
       }
@@ -418,15 +418,15 @@ class IntervalTree with IterableMixin<Interval> {
   }
 
   @override
-  bool contains(dynamic interval) {
-    final iv = _asInterval(interval);
-    BidirectionalIterator<Interval?> it = _tree.fromIterator(iv!);
-    while (it.movePrevious() && iv.intersects(it.current!)) {
-      if (it.current!.contains(iv)) return true;
+  bool contains(Object? element) {
+    final iv = _asInterval(element);
+    var it = _tree.fromIterator(iv!);
+    while (it.movePrevious() && iv.intersects(it.current)) {
+      if (it.current.contains(iv)) return true;
     }
     it = _tree.fromIterator(iv, inclusive: false);
-    while (it.moveNext() && it.current!.intersects(iv)) {
-      if (it.current!.contains(iv)) return true;
+    while (it.moveNext() && it.current.intersects(iv)) {
+      if (it.current.contains(iv)) return true;
     }
     return false;
   }
@@ -457,13 +457,13 @@ class IntervalTree with IterableMixin<Interval> {
 
   /// Returns a bidirectional iterator that allows iterating the intervals.
   @override
-  BidirectionalIterator<Interval> get iterator => _tree.iterator;
+  TreeIterator<Interval> get iterator => _tree.iterator;
 
   /// Returns a string representation of the tree.
   @override
-  String toString() => 'IntervalTree' + super.toString();
+  String toString() => 'IntervalTree${super.toString()}';
 
-  Interval? _asInterval(dynamic? interval) {
+  Interval? _asInterval(dynamic interval) {
     if (interval is Iterable) {
       if (interval.length != 2 || interval.first is Iterable) {
         throw ArgumentError('$interval is not an interval');
@@ -490,7 +490,4 @@ class IntervalTree with IterableMixin<Interval> {
     _tree.addAll([...?a.difference(b)]);
     return true;
   }
-
-  final AvlTreeSet<Interval> _tree =
-      AvlTreeSet<Interval>(comparator: Comparable.compare);
 }

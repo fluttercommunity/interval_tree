@@ -30,9 +30,7 @@
 .pub/
 build/
 pubspec.lock
-.test_coverage.dart
-lcov.info
-coverage_badge.svg
+coverage/
 
 # Android related
 **/android/**/gradle-wrapper.jar

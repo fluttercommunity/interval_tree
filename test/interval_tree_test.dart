@@ -1,3 +1,5 @@
+// ignore_for_file: collection_methods_unrelated_type
+
 /*
  * Copyright (c) 2020 J-P Nurmi <jpnurmi@gmail.com>
  *
